@@ -21,14 +21,11 @@ class Parser implements ParserInterface
         	return 'Неверный адрес страницы';
         }
         
-        preg_match_all("~<$tag>(.*)<\/$tag>~", $page, $match); 
-        if (!$match) {
-            return 'Тэг не найден'; 
+        preg_match_all('/<' . $tag . '.*?>(.*?)<\/' . $tag . '>/s', $page, $match); 
+        if (empty($match)) {
+            return 'Тeг не найден'; 
         } else {
             return $match[0]; 
         }
     }
 }
-
-$parse1 = new Parser();
-print_r($parse1->process('http://listen-radio.org/news/', 'h3'));
