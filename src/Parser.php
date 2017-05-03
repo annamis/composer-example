@@ -28,8 +28,4 @@ class Parser implements ParserInterface
             return $match[0]; 
         }
     }
-        
-    public function test() {
-        //New feature
-    }
 }
